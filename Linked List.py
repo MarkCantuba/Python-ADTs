@@ -21,25 +21,24 @@ class Node(object):
 
 class LinkedList(object):
 
-    def __init__(self, node):
-        self.root = node
-        self.count = 1
+    def __init__(self):
+        self.root = None
+        self.count = 0
 
     def __len__(self):
         return self.count
 
     def __str__(self):
+
         if self.is_empty():
             return "Linked List is empty!"
         return self.root.__str__()
 
     def insert_front(self, value):
-        new_node = Node(value)
         if self.is_empty():
-            self.root = new_node
+            self.root = Node(value)
         else:
-            new_node.set_next(self.root)
-            self.root = new_node
+            self.root = Node(value, self.root)
         self.count += 1
 
     def is_empty(self):
@@ -49,10 +48,12 @@ class LinkedList(object):
         return self.root
 
 
-ll = LinkedList(Node(1))
-ll.insert_front(Node(2))
+ll = LinkedList()
+ll.insert_front(10)
+ll.insert_front(11)
+ll.insert_front(12)
 
-print(ll)
+print(ll.count)
 
 
 
