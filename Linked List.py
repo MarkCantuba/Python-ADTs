@@ -1,60 +1,58 @@
 class Node(object):
-    __value = 0
-    _next = None
+    def __init__(self, value, next_node=None):
+        self.value = value
+        self.next = next_node
 
-    def __init__(self, value):
-        self.__value = value
-        self.__next = None
+    def set_next(self, value):
+        self.next = value
+
+    def has_next(self):
+        return self.next is not None
+
+    def get_value(self):
+        return self.value
+
+    def next(self):
+        return self.next
 
     def __str__(self):
-        return "Value: " + str(self.__value) + " ; Next: " + str(self.__next) + " "
+        return str(self.value) + ";" + str(self.next)
 
 
 class LinkedList(object):
-    __rootNode: Node = None
-    __currNode: Node = None
 
-    def __init__(self, root_value):
-        self.__rootNode = Node(root_value)
+    def __init__(self, node):
+        self.root = node
+        self.count = 1
 
-    def is_empty(self):
-        return self.__rootNode is None
-
-    def go_root(self):
-        self.__currNode = self.__rootNode
-
-    def next(self):
-        if self.__currNode._next is not None:
-            self.__currNode = self.__currNode._next
-        else:
-            pass
-
-    def has_next(self):
-        return self.__currNode._next is not None
-
-    def get_curr_node(self):
-        if self.is_empty():
-            return "Linked List is empty!"
-        return self.__currNode
-
-    def get_root(self):
-        if self.is_empty():
-            return "Linked List is empty!"
-        return self.__rootNode
-
-    def get_next(self):
-        if self.is_empty():
-            return "Linked List is empty!"
-        return self.__rootNode._next
+    def __len__(self):
+        return self.count
 
     def __str__(self):
-        string = ""
         if self.is_empty():
-            return "Linked list is empty!"
+            return "Linked List is empty!"
+        return self.root.__str__()
+
+    def insert_front(self, value):
+        new_node = Node(value)
+        if self.is_empty():
+            self.root = new_node
         else:
-            self.go_root()
-            while self.has_next():
-                string += self.__currNode
-                self.next()
-            return string
+            new_node.set_next(self.root)
+            self.root = new_node
+        self.count += 1
+
+    def is_empty(self):
+        return self.count == 0
+
+    def get_root(self):
+        return self.root
+
+
+ll = LinkedList(Node(1))
+ll.insert_front(Node(2))
+
+print(ll)
+
+
 
