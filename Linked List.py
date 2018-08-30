@@ -1,21 +1,35 @@
+# @Author: Mark Cantuba
+
 from LLNode import Node
 
-class LinkedList(object):
 
+class LinkedList(object):
+    """
+    A Linked List ADT
+    """
     def __init__(self):
+        """
+        Constructor method that initializes our Linked List. Creates an empty linked list!
+        """
         self._root = None
         self._last = None
         self._count = 0
 
-    def __len__(self):
-        return self._count
-
     def __str__(self):
+        """
+        To String method to print out a string representation of our linked list
+        :return: String representation of our linked list
+        """
         if self.is_empty():
             return "Linked List is empty!"
         return self._root.__str__()
 
     def insert_front(self, value):
+        """
+        Insert a value in the beginning of our list at index 0
+        :param value: value
+        :return:
+        """
         if self.is_empty():
             self._root = Node(value)
             self._last = self._root
@@ -54,9 +68,9 @@ class LinkedList(object):
     def contains(self, value):
         curr = self._root
         while curr.get_value() != value and curr.has_next():
-            curr = curr.next()
             if curr.get_value() == value:
                 return True
+            curr = curr.next()
         return False
 
     def is_empty(self):
@@ -82,5 +96,7 @@ class LinkedList(object):
 
 if __name__ == "__main__":
     print("***** Testing Linked List ADT *****")
+
+    print("\n Creating New Linked List!")
 
 
