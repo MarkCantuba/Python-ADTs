@@ -1,23 +1,4 @@
-class Node(object):
-    def __init__(self, value, next_node=None):
-        self._value = value
-        self._next = next_node
-
-    def set_next(self, value):
-        self._next = value
-
-    def has_next(self):
-        return self._next is not None
-
-    def get_value(self):
-        return self._value
-
-    def next(self):
-        return self._next
-
-    def __str__(self):
-        return str(self._value) + ";" + str(self._next)
-
+from LLNode import Node
 
 class LinkedList(object):
 
@@ -70,6 +51,14 @@ class LinkedList(object):
             prev.next().set_next(curr)
         self._count += 1
 
+    def contains(self, value):
+        curr = self._root
+        while curr.get_value() != value and curr.has_next():
+            curr = curr.next()
+            if curr.get_value() == value:
+                return True
+        return False
+
     def is_empty(self):
         return self._count == 0
 
@@ -91,6 +80,7 @@ class LinkedList(object):
         return self._count
 
 
-
+if __name__ == "__main__":
+    print("***** Testing Linked List ADT *****")
 
 
