@@ -81,22 +81,16 @@ class LinkedList(object):
 
     def get_at_index(self, index):
         current = self._root
-
+        counter = 0
+        while counter != index:
+            current = current.next()
+            counter += 1
+        return current.get_value()
 
     def length(self):
         return self._count
 
 
-ll = LinkedList()
-ll.insert_front(10)
-ll.insert_front(11)
-ll.insert_front(12)
-ll.insert_last(9)
-ll.insert_last(8)
-# print(ll)
-# print(ll.length())
-print(ll)
-ll.insert_at_index(2, 100)
-print(ll)
+
 
 
