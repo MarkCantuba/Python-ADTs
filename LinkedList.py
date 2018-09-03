@@ -179,6 +179,15 @@ class LinkedList(object):
         """
         return self._count
 
+    def has_next(self):
+        return self._root.has_next()
+
+    def next(self):
+        return self._root.next()
+
+    def value(self):
+        return self._root.get_value()
+
 
 if __name__ == "__main__":
     print("***** Testing Linked List ADT *****")
